@@ -75,7 +75,7 @@ public class ItemRepository implements ItemDao {
     }
 
     private String generateSqlUpdate(Item item, String itemString) throws JSONException {
-        String sql = "UPDATE PRODUCTS SET ";
+        String sql = "UPDATE ITEMS SET ";
         JSONObject jsonObject = new JSONObject(itemString);
         Iterator<String> keys = jsonObject.keys();
         if (!keys.hasNext()) {
@@ -87,6 +87,12 @@ public class ItemRepository implements ItemDao {
                 sql = sql + key.replaceAll("([A-Z])", "_$1").toLowerCase() + "='" + jsonObject.get(key) + "' ";
             else if (key.equals("itemCreatedAt"))
                 sql = sql + key.replaceAll("([A-Z])", "_$1").toLowerCase() + "='" + item.getItemCreatedAt().toString()
+                        + "' ";
+            else if (key.equals("orderId"))
+                sql = sql + key.replaceAll("([A-Z])", "_$1").toLowerCase() + "='" + item.getOrderId().toString()
+                        + "' ";
+            else if (key.equals("productId"))
+                sql = sql + key.replaceAll("([A-Z])", "_$1").toLowerCase() + "='" + item.getProductId().toString()
                         + "' ";
             else
                 sql = sql + key.replaceAll("([A-Z])", "_$1").toLowerCase() + "=" + jsonObject.get(key) + " ";
