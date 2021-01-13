@@ -8,7 +8,7 @@ Spring boot rest api
 ## DOCKER
 - RUNNING POSTGRES
 - create:
-docker run --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=order_management_db -d postgres:alpine
+docker run --name order_management_db -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=order_management -d postgres:alpine
 - stop:
 docker stop postgres
 - start:
