@@ -16,4 +16,14 @@ docker start postgres
 
 ## DATABASE DESCRIPTION
 
-ITEMS
+|       Items           |
+|--------------------   |
+|itemId: UUID (PK)      |
+|itemName: String       |
+|itemPrice: Double      |
+|itemQuantity:Integer   |
+|itemDescription: String|
+|itemCode:Integer       |         
+|itemDiscount:Double    |                
+|orderId:UUID           |    
+|productId:UUID         |    
