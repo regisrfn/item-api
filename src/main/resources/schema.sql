@@ -1,6 +1,3 @@
--- *************** SqlDBM: PostgreSQL ****************;
--- ***************************************************;
--- ************************************** items
 CREATE TABLE IF NOT EXISTS items (
     item_id uuid NOT NULL,
     item_name varchar(50) NOT NULL,
@@ -14,8 +11,8 @@ CREATE TABLE IF NOT EXISTS items (
     item_discount numeric NULL,
     CONSTRAINT PK_item PRIMARY KEY (item_id),
     CONSTRAINT ind_53 UNIQUE (item_code),
-    CONSTRAINT FK_order_item FOREIGN KEY (order_id) REFERENCES orders (order_id) ON UPDATE CASCADE,
-    CONSTRAINT FK_product_item FOREIGN KEY (product_id) REFERENCES products (product_id) ON DELETE
+    CONSTRAINT fk_order_item FOREIGN KEY (order_id) REFERENCES orders (order_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_product_item FOREIGN KEY (product_id) REFERENCES products (product_id) ON DELETE
     SET NULL ON UPDATE CASCADE
 );
 CREATE INDEX IF NOT EXISTS fk_order_item ON items (order_id);
