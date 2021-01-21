@@ -53,6 +53,7 @@ public class ItemRepository implements ItemDao {
     public List<Item> getAll() {
         return jpaDataAccess.findAll();
     }
+    
 
     @Override
     public Item getItem(UUID id) {
@@ -72,6 +73,11 @@ public class ItemRepository implements ItemDao {
             e.printStackTrace();
             throw new ApiRequestException(e.getMessage());
         }
+    }
+
+    @Override
+    public List<Item> getItemFromOrder(UUID orderId) {
+        return jpaDataAccess.findItemsByOrderId(orderId);
     }
 
     private String generateSqlUpdate(Item item, String itemString) throws JSONException {

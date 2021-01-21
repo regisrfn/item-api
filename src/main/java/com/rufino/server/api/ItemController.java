@@ -45,6 +45,19 @@ public class ItemController {
         return itemService.getAllItems();
     }
 
+    @GetMapping("order/{id}")
+    public List<Item> getAllItemsFromOrder(@PathVariable String id) {
+        try {
+            UUID orderId = UUID.fromString(id);
+            List<Item> itemsList = itemService.getItemFromOrder(orderId);
+            if (itemsList.size() == 0)
+                throw new ApiRequestException("Order has no items", HttpStatus.NOT_FOUND);
+            return itemsList;
+        } catch (IllegalArgumentException e) {
+            throw new ApiRequestException("Invalid item UUID format", HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping("{id}")
     public Item getItemById(@PathVariable String id) {
         try {

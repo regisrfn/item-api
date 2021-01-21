@@ -51,4 +51,8 @@ public class ItemService {
     public Item updateItem(Item item) {
         return itemDao.insertItem(item);
     }
+
+    public List<Item> getItemFromOrder(UUID orderId){
+        return itemDao.getItemFromOrder(orderId);
+    }
 }

@@ -15,4 +15,6 @@ public interface ItemDao {
     Item getItem(UUID id);
 
     Item updateItem(UUID id, Item item);
+
+    List<Item> getItemFromOrder(UUID orderId);
 }

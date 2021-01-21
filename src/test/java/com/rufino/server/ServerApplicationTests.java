@@ -205,6 +205,24 @@ class ServerApplicationTests {
 		}
 	}
 
+	//////////////////// GET ITEM FROM ORDER/////////////////////////////////
+	@Test
+	void itShouldGetAnItemFromOrder() {
+		List<Item> itemsList = itemService.getItemFromOrder(UUID.fromString("d0ba6751-90a2-4c50-9661-aecd8360188e"));
+		assertThat(itemsList.size()).isEqualTo(0);
+
+		Item item1 = new Item();
+		setItem(item1);
+		saveAndAssert(item1);
+
+		Item item2 = new Item();
+		setItem(item2);
+		saveAndAssert(item2, 1, 2);
+
+		itemsList = itemService.getItemFromOrder(UUID.fromString("d0ba6751-90a2-4c50-9661-aecd8360188e"));
+		assertThat(itemsList.size()).isEqualTo(2);
+	}
+
 	///////////////////////////////////////////////////////////////////////////////////
 	private void setItem(Item item) {
 		item.setItemName("Item 1");
